@@ -254,55 +254,99 @@ footer{
 </div>
 
 <script>
-let galleryData, currentImages=[], index=0;
+let galleryData;
+let currentImages = [];
+let currentIndex = 0;
 
 fetch('gallery.json')
-.then(r=>r.json())
-.then(data=>{
-  galleryData=data;
-  const sec=document.getElementById('sectionButtons');
-  Object.keys(data).forEach((s,i)=>{
-    const b=document.createElement('button');
-    b.textContent=s;
-    b.onclick=()=>loadAreas(s);
-    if(i==0) b.click();
-    sec.appendChild(b);
+  .then(r => r.json())
+  .then(data => {
+    galleryData = data;
+    buildSectionButtons();
   });
-});
 
-function loadAreas(section){
-  document.getElementById('areaButtons').innerHTML='';
-  document.getElementById('galleryGrid').innerHTML='';
-  const areas=galleryData[section];
-  Object.keys(areas).forEach(a=>{
-    const b=document.createElement('button');
-    b.textContent=a;
-    b.onclick=()=>loadImages(areas[a]);
-    document.getElementById('areaButtons').appendChild(b);
+function buildSectionButtons() {
+  const sectionDiv = document.getElementById('sectionButtons');
+  sectionDiv.innerHTML = '';
+
+  Object.keys(galleryData).forEach((section, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = section;
+    btn.onclick = () => selectSection(section, btn);
+    sectionDiv.appendChild(btn);
+
+    if (i === 0) btn.click(); // 👈 בחירה אוטומטית ראשונה
   });
 }
 
-function loadImages(area){
-  currentImages=area.images.map(i=>area.path+i);
-  const g=document.getElementById('galleryGrid');
-  g.innerHTML='';
-  currentImages.forEach((src,i)=>{
-    const img=document.createElement('img');
-    img.src=src;
-    img.onclick=()=>openLightbox(i);
-    g.appendChild(img);
+function selectSection(section, btn) {
+  setActive(btn, 'sectionButtons');
+  buildAreaButtons(section);
+}
+
+function buildAreaButtons(section) {
+  const areaDiv = document.getElementById('areaButtons');
+  areaDiv.innerHTML = '';
+
+  const areas = galleryData[section];
+  Object.keys(areas).forEach((area, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = area;
+    btn.onclick = () => {
+      setActive(btn, 'areaButtons');
+      loadImages(areas[area]);
+    };
+    areaDiv.appendChild(btn);
+
+    if (i === 0) btn.click(); // 👈 בוחר סלון אוטומטית
   });
 }
 
-function openLightbox(i){
-  index=i;
-  document.getElementById('lightbox').style.display='flex';
-  document.getElementById('lightboxImg').src=currentImages[index];
+function loadImages(area) {
+  currentImages = area.images.map(img => area.path + img);
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = '';
+
+  currentImages.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.onclick = () => openLightbox(i);
+    grid.appendChild(img);
+  });
 }
-function closeLightbox(){document.getElementById('lightbox').style.display='none'}
-function next(){index=(index+1)%currentImages.length;openLightbox(index)}
-function prev(){index=(index-1+currentImages.length)%currentImages.length;openLightbox(index)}
+
+function setActive(activeBtn, containerId) {
+  document
+    .getElementById(containerId)
+    .querySelectorAll('button')
+    .forEach(b => b.classList.remove('active'));
+  activeBtn.classList.add('active');
+}
+
+/* ===== Lightbox ===== */
+
+function openLightbox(i) {
+  currentIndex = i;
+  document.getElementById('lightbox').style.display = 'flex';
+  document.getElementById('lightboxImg').src = currentImages[currentIndex];
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+function next() {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  document.getElementById('lightboxImg').src = currentImages[currentIndex];
+}
+
+function prev() {
+  currentIndex =
+    (currentIndex - 1 + currentImages.length) % currentImages.length;
+  document.getElementById('lightboxImg').src = currentImages[currentIndex];
+}
 </script>
+
 
 </body>
 </html>
