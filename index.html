@@ -1,169 +1,83 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>חופשה בכפר – וילה להשכרה</title>
+  <meta charset="UTF-8">
+  <title>וילה להשכרה</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    :root{
-      --bg:#f7f7f5;
-      --card:#ffffff;
-      --accent:#2f6f4e;
-      --text:#1f2937;
-      --muted:#6b7280;
-      --radius:16px;
-      --shadow:0 10px 25px rgba(0,0,0,.08);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
     }
 
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:linear-gradient(180deg,#eef3f0, var(--bg));
+    header, footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 30px;
     }
 
-    header{
-      background:linear-gradient(135deg,var(--accent),#1f4f39);
-      color:#fff;
-      padding:56px 20px;
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeUp 0.8s ease;
     }
 
-    .container{max-width:1100px;margin:auto;padding:20px}
-
-    h1{margin:0 0 8px;font-size:36px}
-    h2{margin:0 0 12px;font-size:26px}
-    h3{margin:0 0 8px;font-size:20px}
-    p{margin:0 0 10px;line-height:1.6}
-
-    .badge{
-      display:inline-block;
-      background:rgba(255,255,255,.18);
-      padding:6px 12px;
-      border-radius:999px;
-      font-size:14px
+    h2, h3 {
+      text-align: center;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:20px
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
     }
 
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:20px
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:20px;
-      align-items:center
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
-    @media (max-width:800px){
-      .hero{grid-template-columns:1fr}
+    /* ===== modal ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
 
-    .hero img{
-      width:100%;
-      height:280px;
-      object-fit:cover;
-      border-radius:var(--radius)
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
     }
 
-    .btn{
-      display:inline-block;
-      background:var(--accent);
-      color:#fff;
-      text-decoration:none;
-      padding:12px 18px;
-      border-radius:12px;
-      font-weight:600
+    .close, .arrow {
+      position: absolute;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .btn.secondary{
-      background:#fff;
-      color:var(--accent);
-      border:2px solid var(--accent)
-    }
+    .close { top: 20px; right: 30px; }
+    .arrow.left { left: 30px; top: 50%; }
+    .arrow.right { right: 30px; top: 50%; }
 
-    .list{padding:0;margin:0;list-style:none}
-
-    .list li{
-      margin:8px 0;
-      padding-right:18px;
-      position:relative
-    }
-
-    .list li:before{
-      content:"✔";
-      position:absolute;
-      right:0;
-      color:var(--accent)
-    }
-
-    /* ===== גלריה ===== */
-
-    .tabs{
-      display:flex;
-      gap:10px;
-      margin-bottom:15px;
-      flex-wrap:wrap;
-    }
-
-    .tabs button{
-      padding:8px 14px;
-      border-radius:999px;
-      border:none;
-      cursor:pointer;
-      background:#e5e7eb;
-      font-weight:600;
-    }
-
-    .tabs button.active{
-      background:var(--accent);
-      color:#fff;
-    }
-
-    .areas{
-      display:flex;
-      gap:10px;
-      margin-bottom:15px;
-      flex-wrap:wrap;
-    }
-
-    .areas button{
-      padding:6px 12px;
-      border-radius:10px;
-      border:1px solid #ddd;
-      background:#fff;
-      cursor:pointer;
-    }
-
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-      gap:12px;
-    }
-
-    .gallery img{
-      width:100%;
-      height:160px;
-      object-fit:cover;
-      border-radius:12px;
-      cursor:pointer;
-    }
-
-    footer{
-      padding:30px 20px;
-      color:var(--muted);
-      text-align:center
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -171,94 +85,57 @@
 <body>
 
 <header>
-  <div class="container">
-    <span class="badge">נופש פסטורלי ליד ירושלים</span>
-    <h1>חופשה בכפר 🌿</h1>
-    <p>וילה מרווחת על צלע הר עם נוף פתוח, מושלמת לקבוצות ומשפחות גדולות.</p>
-  </div>
+  <h1>וילה יוקרתית להשכרה</h1>
+  <p>חופשה מושלמת במקום מושלם</p>
 </header>
 
-<main class="container">
-
-  <section class="card hero">
-    <div>
-      <h2>ברוכים הבאים</h2>
-      <p><strong>מיקום:</strong> כ־15 דקות מירושלים וכ־40 דקות מתל אביב.</p>
-      <a class="btn" href="#contact">יצירת קשר</a>
-      <a class="btn secondary" href="#gallery">לתמונות</a>
-    </div>
-    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop" alt="וילה בטבע">
-  </section>
-
-  <section id="gallery" class="card" style="margin-top:20px">
-    <h3>גלריה</h3>
-
-    <div class="tabs">
-      <button class="active" onclick="showUnit('villa')">וילה</button>
-      <button onclick="showUnit('zimmer')">צימר</button>
-    </div>
-
-    <div id="areas" class="areas"></div>
-    <div class="gallery"></div>
-  </section>
-
-  <section id="contact" class="card" style="margin-top:20px">
-    <h3>פרטים והזמנות</h3>
-    <p>📞 <strong>058-447-3008</strong></p>
-    <a class="btn" href="tel:0584473008">התקשרו עכשיו</a>
-  </section>
-
-</main>
+<section>
+  <h2>גלריית תמונות</h2>
+  <div id="content"></div>
+</section>
 
 <footer>
-  © חופשה בכפר · כל הזכויות שמורות
+  © כל הזכויות שמורות
 </footer>
 
+<!-- modal -->
+<div class="modal" id="modal">
+  <span class="close" onclick="closeModal()">×</span>
+  <span class="arrow left" onclick="prevImage()">❮</span>
+  <img id="modalImg">
+  <span class="arrow right" onclick="nextImage()">❯</span>
+</div>
+
 <script>
-let dataStore = {};
-let currentUnit = 'villa';
+  let allImages = [];
+  let currentIndex = 0;
 
-fetch('images.json')
-  .then(res => res.json())
-  .then(data => {
-    dataStore = data;
-    renderAreas();
-  });
+  fetch('gallery.json')
+    .then(res => res.json())
+    .then(data => {
+      const content = document.getElementById('content');
 
-function showUnit(unit) {
-  currentUnit = unit;
-  document.querySelectorAll('.tabs button')
-    .forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  renderAreas();
-}
+      Object.keys(data).forEach(sectionName => {
+        const sectionTitle = document.createElement('h2');
+        sectionTitle.textContent = sectionName;
+        content.appendChild(sectionTitle);
 
-function renderAreas() {
-  const areas = document.getElementById('areas');
-  const gallery = document.querySelector('.gallery');
-  areas.innerHTML = '';
-  gallery.innerHTML = '';
+        Object.keys(data[sectionName]).forEach(areaName => {
+          const area = data[sectionName][areaName];
 
-  Object.keys(dataStore[currentUnit]).forEach(area => {
-    const btn = document.createElement('button');
-    btn.textContent = area;
-    btn.onclick = () => showArea(area);
-    areas.appendChild(btn);
-  });
-}
+          const h3 = document.createElement('h3');
+          h3.textContent = areaName;
+          content.appendChild(h3);
 
-function showArea(area) {
-  const gallery = document.querySelector('.gallery');
-  gallery.innerHTML = '';
+          const gallery = document.createElement('div');
+          gallery.className = 'gallery';
 
-  const section = dataStore[currentUnit][area];
-  section.images.forEach(imgName => {
-    const img = document.createElement('img');
-    img.src = section.path + imgName;
-    gallery.appendChild(img);
-  });
-}
-</script>
+          area.images.forEach(img => {
+            const imgPath = area.path + img;
+            const index = allImages.length;
+            allImages.push(imgPath);
 
-</body>
-</html>
+            const image = document.createElement('img');
+            image.src = imgPath;
+            image.onclick = () => openModal(index);
+            gallery.a
