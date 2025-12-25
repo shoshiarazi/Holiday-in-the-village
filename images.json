@@ -1,5 +1,27 @@
 {
-  "living-room": ["living1.jpg", "living2.jpg"],
-  "kitchen": ["kitchen1.jpg", "kitchen2.jpg"],
-  "garden": ["DJI_0279.jpg", "DJI_0290.jpg","IMG_7199.HEIC","IMG_7265.HEIC"]
+  "villa": {
+    "סלון": {
+      "path": "images/villa/salon/",
+      "images": ["IMG_1.jpg", "IMG_2.jpg"]
+    },
+    "מטבח": {
+      "path": "images/villa/kitchen/",
+      "images": ["IMG_3.jpg", "IMG_4.jpg"]
+    },
+    "חצר": {
+      "path": "images/villa/garden/",
+      "images": ["DJI_0279.jpg", "DJI_0290.jpg"]
+    }
+  },
+  "zimmer": {
+    "סלון": {
+      "path": "images/zimmer/salon/",
+      "images": ["IMG_10.jpg"]
+    },
+    "חדר שינה": {
+      "path": "images/zimmer/bedroom/",
+      "images": ["IMG_11.jpg", "IMG_12.jpg"]
+    }
+  }
 }
+
