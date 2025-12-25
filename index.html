@@ -258,7 +258,7 @@ let galleryData;
 let currentImages = [];
 let currentIndex = 0;
 
-fetch('gallery.json')
+fetch('images.json')
   .then(r => r.json())
   .then(data => {
     galleryData = data;
