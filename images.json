@@ -2,11 +2,11 @@
   "villa": {
     "סלון": {
       "path": "images/villa/salon/",
-      "images": ["IMG_1.jpg", "IMG_2.jpg"]
+      "images": ["RR3A1843.jpg", "IMG_7568.JPG","IMG_7561.JPG"]
     },
     "מטבח": {
       "path": "images/villa/kitchen/",
-      "images": ["IMG_3.jpg", "IMG_4.jpg"]
+      "images": ["RR3A1834.jpg"]
     },
     "חצר": {
       "path": "images/villa/garden/",
