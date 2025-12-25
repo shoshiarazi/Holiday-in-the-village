@@ -172,31 +172,34 @@ footer{
 <header>
   <div class="container">
     <h1>חופשה בכפר 🌿</h1>
-    <p>וילה וצימר במתחם פרטי, מושלם למשפחות וקבוצות</p>
+    <p>וילה מרווחת על צלע הר עם נוף פתוח, מושלמת לקבוצות ומשפחות גדולות.</p>
   </div>
 </header>
 
 <main class="container">
 
+<!-- ===== תוכן שמעל הגלריה ===== -->
 <section class="card hero">
   <div>
     <h2>ברוכים הבאים</h2>
-    <p>מתחם אירוח מרווח על צלע הר עם נוף פתוח.</p>
-    <p><strong>מיקום:</strong> כ־15 דקות מירושלים</p>
-    <a href="#gallery" class="btn">לתמונות</a>
-    <a href="#contact" class="btn">יצירת קשר</a>
+    <p>המקום חדש – חלק מקישורי התמונות יתעדכנו בקרוב. אנו עושים זאת במהירות האפשרית.</p>
+    <p><strong>מיקום:</strong> כ־15 דקות מירושלים וכ־40 דקות מתל אביב.</p>
+    <a class="btn" href="#contact">יצירת קשר</a>
+    <a class="btn secondary" href="#gallery">לתמונות</a>
   </div>
-  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200">
+  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop" alt="וילה בטבע" />
 </section>
 
 <section class="grid">
   <div class="card">
-    <h3>מה יש ביישוב</h3>
+    <h3>מה בסביבה</h3>
     <ul class="list">
       <li>מכולת גדולה</li>
       <li>מגרשי ספורט</li>
-      <li>בריכת שחייה</li>
-      <li>פארקים ופינות חי</li>
+      <li>בריכת שחייה להשכרה</li>
+      <li>פארק שעשועים</li>
+      <li>פינות חי</li>
+      <li>מסלולי הליכה וטבע ירוק</li>
     </ul>
   </div>
 
@@ -204,7 +207,7 @@ footer{
     <h3>הווילה</h3>
     <ul class="list">
       <li>סלון ענק</li>
-      <li>מטבח מאובזר</li>
+      <li>מטבח גדול ומאובזר</li>
       <li>6 חדרי שינה</li>
       <li>4 חדרי רחצה</li>
     </ul>
@@ -213,18 +216,50 @@ footer{
   <div class="card">
     <h3>בחצר</h3>
     <ul class="list">
-      <li>טרמפולינה</li>
-      <li>מדשאה גדולה</li>
-      <li>פינות ישיבה</li>
+      <li>טרמפולינה ענקית</li>
+      <li>שולחנות משחק</li>
+      <li>מדשאה ופינות ישיבה</li>
+      <li>נוף פתוח</li>
     </ul>
   </div>
 </section>
 
 <section class="card">
   <h3>קיבולת</h3>
-  <p>עד 36 מיטות, אפשרות למזרנים נוספים</p>
+  <p><strong>סה"כ:</strong> 8 חדרים סגורים, עד 36 מיטות (אפשרות לתוספת מזרנים).</p>
+  <small>כל המיטות נפרדות.</small>
 </section>
 
+<section id="rooms" class="card rooms">
+  <h3>חלוקת חדרים</h3>
+  <details open>
+    <summary>קומת כניסה</summary>
+    <p><strong>חדר 1:</strong> 5 מיטות</p>
+    <p><strong>חדר 2:</strong> 3 מיטות</p>
+    <small>חדר רחצה בקומה</small>
+  </details>
+  <details>
+    <summary>קומה ראשונה</summary>
+    <p><strong>חדר 3:</strong> 5 מיטות</p>
+    <p><strong>חדר 4:</strong> 2 מיטות</p>
+    <p><strong>סוויטה (חדר 5):</strong> 4 מיטות + מרפסת</p>
+  </details>
+  <details>
+    <summary>יחידה תחתונה – כניסה נפרדת</summary>
+    <p><strong>חדר 6:</strong> 2 מיטות</p>
+    <p><strong>סלון:</strong> 2 מיטות</p>
+    <small>מטבחון, מקלחת ושירותים</small>
+  </details>
+  <details>
+    <summary>הצימר</summary>
+    <p><strong>חדר 7:</strong> 2 מיטות</p>
+    <p><strong>חדר 8:</strong> 6 מיטות</p>
+    <p><strong>סלון:</strong> 6 מיטות</p>
+  </details>
+</section>
+<!-- ===== סוף תוכן שמעל הגלריה ===== -->
+
+<!-- ===== גלריה ===== -->
 <section id="gallery" class="card">
   <h3>גלריה</h3>
 
@@ -346,7 +381,6 @@ function prev() {
   document.getElementById('lightboxImg').src = currentImages[currentIndex];
 }
 </script>
-
 
 </body>
 </html>
