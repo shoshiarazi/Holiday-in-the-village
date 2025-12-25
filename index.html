@@ -1,141 +1,308 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>וילה להשכרה</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>חופשה בכפר – וילה וצימר להשכרה</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }
+<style>
+:root{
+  --bg:#f7f7f5;
+  --card:#ffffff;
+  --accent:#2f6f4e;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --radius:16px;
+  --shadow:0 10px 25px rgba(0,0,0,.08);
+}
 
-    header, footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 30px;
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, Arial;
+  background:linear-gradient(180deg,#eef3f0,var(--bg));
+  color:var(--text);
+}
 
-    section {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-      animation: fadeUp 0.8s ease;
-    }
+header{
+  background:linear-gradient(135deg,var(--accent),#1f4f39);
+  color:#fff;
+  padding:50px 20px;
+}
 
-    h2, h3 {
-      text-align: center;
-    }
+.container{max-width:1100px;margin:auto;padding:20px}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 15px;
-    }
+h1{margin:0;font-size:36px}
+h2{font-size:26px}
+h3{font-size:20px}
 
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  margin-top:20px;
+}
 
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
 
-    /* ===== modal ===== */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+.list{list-style:none;padding:0}
+.list li{margin:8px 0;padding-right:18px;position:relative}
+.list li::before{content:"✔";position:absolute;right:0;color:var(--accent)}
 
-    .modal img {
-      max-width: 90%;
-      max-height: 80%;
-    }
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:20px;
+}
+.hero img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  border-radius:var(--radius);
+}
 
-    .close, .arrow {
-      position: absolute;
-      color: white;
-      font-size: 40px;
-      cursor: pointer;
-      user-select: none;
-    }
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr}
+}
 
-    .close { top: 20px; right: 30px; }
-    .arrow.left { left: 30px; top: 50%; }
-    .arrow.right { right: 30px; top: 50%; }
+.btn{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  padding:12px 18px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  margin-left:10px;
+}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+/* ===== גלריה ===== */
+
+.gallery-sections button{
+  background:#fff;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  border-radius:12px;
+  padding:10px 16px;
+  cursor:pointer;
+  margin:5px;
+  font-weight:600;
+}
+
+.gallery-sections button.active{
+  background:var(--accent);
+  color:#fff;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+  margin-top:15px;
+  animation:fadeIn .4s ease;
+}
+
+.gallery-grid img{
+  width:100%;
+  height:130px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.3s;
+}
+.gallery-grid img:hover{transform:scale(1.03)}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1}
+}
+
+/* ===== מסך מלא ===== */
+
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:90%;
+}
+
+.nav{
+  position:absolute;
+  top:50%;
+  font-size:40px;
+  color:#fff;
+  cursor:pointer;
+  padding:20px;
+  user-select:none;
+}
+.nav.left{right:10px}
+.nav.right{left:10px}
+.close{
+  position:absolute;
+  top:20px;
+  left:20px;
+  font-size:30px;
+  color:#fff;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>וילה יוקרתית להשכרה</h1>
-  <p>חופשה מושלמת במקום מושלם</p>
+  <div class="container">
+    <h1>חופשה בכפר 🌿</h1>
+    <p>וילה וצימר במתחם פרטי, מושלם למשפחות וקבוצות</p>
+  </div>
 </header>
 
-<section>
-  <h2>גלריית תמונות</h2>
-  <div id="content"></div>
+<main class="container">
+
+<section class="card hero">
+  <div>
+    <h2>ברוכים הבאים</h2>
+    <p>מתחם אירוח מרווח על צלע הר עם נוף פתוח.</p>
+    <p><strong>מיקום:</strong> כ־15 דקות מירושלים</p>
+    <a href="#gallery" class="btn">לתמונות</a>
+    <a href="#contact" class="btn">יצירת קשר</a>
+  </div>
+  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200">
 </section>
 
+<section class="grid">
+  <div class="card">
+    <h3>מה יש ביישוב</h3>
+    <ul class="list">
+      <li>מכולת גדולה</li>
+      <li>מגרשי ספורט</li>
+      <li>בריכת שחייה</li>
+      <li>פארקים ופינות חי</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>הווילה</h3>
+    <ul class="list">
+      <li>סלון ענק</li>
+      <li>מטבח מאובזר</li>
+      <li>6 חדרי שינה</li>
+      <li>4 חדרי רחצה</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>בחצר</h3>
+    <ul class="list">
+      <li>טרמפולינה</li>
+      <li>מדשאה גדולה</li>
+      <li>פינות ישיבה</li>
+    </ul>
+  </div>
+</section>
+
+<section class="card">
+  <h3>קיבולת</h3>
+  <p>עד 36 מיטות, אפשרות למזרנים נוספים</p>
+</section>
+
+<section id="gallery" class="card">
+  <h3>גלריה</h3>
+
+  <div class="gallery-sections" id="sectionButtons"></div>
+  <div class="gallery-sections" id="areaButtons"></div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<section id="contact" class="card">
+  <h3>פרטים והזמנות</h3>
+  <p>📞 058-447-3008</p>
+  <a class="btn" href="tel:0584473008">התקשרו עכשיו</a>
+</section>
+
+</main>
+
 <footer>
-  © כל הזכויות שמורות
+© חופשה בכפר · כל הזכויות שמורות
 </footer>
 
-<!-- modal -->
-<div class="modal" id="modal">
-  <span class="close" onclick="closeModal()">×</span>
-  <span class="arrow left" onclick="prevImage()">❮</span>
-  <img id="modalImg">
-  <span class="arrow right" onclick="nextImage()">❯</span>
+<!-- מסך מלא -->
+<div id="lightbox">
+  <span class="close" onclick="closeLightbox()">✕</span>
+  <span class="nav left" onclick="prev()">❯</span>
+  <img id="lightboxImg">
+  <span class="nav right" onclick="next()">❮</span>
 </div>
 
 <script>
-  let allImages = [];
-  let currentIndex = 0;
+let galleryData, currentImages=[], index=0;
 
-  fetch('gallery.json')
-    .then(res => res.json())
-    .then(data => {
-      const content = document.getElementById('content');
+fetch('gallery.json')
+.then(r=>r.json())
+.then(data=>{
+  galleryData=data;
+  const sec=document.getElementById('sectionButtons');
+  Object.keys(data).forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.textContent=s;
+    b.onclick=()=>loadAreas(s);
+    if(i==0) b.click();
+    sec.appendChild(b);
+  });
+});
 
-      Object.keys(data).forEach(sectionName => {
-        const sectionTitle = document.createElement('h2');
-        sectionTitle.textContent = sectionName;
-        content.appendChild(sectionTitle);
+function loadAreas(section){
+  document.getElementById('areaButtons').innerHTML='';
+  document.getElementById('galleryGrid').innerHTML='';
+  const areas=galleryData[section];
+  Object.keys(areas).forEach(a=>{
+    const b=document.createElement('button');
+    b.textContent=a;
+    b.onclick=()=>loadImages(areas[a]);
+    document.getElementById('areaButtons').appendChild(b);
+  });
+}
 
-        Object.keys(data[sectionName]).forEach(areaName => {
-          const area = data[sectionName][areaName];
+function loadImages(area){
+  currentImages=area.images.map(i=>area.path+i);
+  const g=document.getElementById('galleryGrid');
+  g.innerHTML='';
+  currentImages.forEach((src,i)=>{
+    const img=document.createElement('img');
+    img.src=src;
+    img.onclick=()=>openLightbox(i);
+    g.appendChild(img);
+  });
+}
 
-          const h3 = document.createElement('h3');
-          h3.textContent = areaName;
-          content.appendChild(h3);
+function openLightbox(i){
+  index=i;
+  document.getElementById('lightbox').style.display='flex';
+  document.getElementById('lightboxImg').src=currentImages[index];
+}
+function closeLightbox(){document.getElementById('lightbox').style.display='none'}
+function next(){index=(index+1)%currentImages.length;openLightbox(index)}
+function prev(){index=(index-1+currentImages.length)%currentImages.length;openLightbox(index)}
+</script>
 
-          const gallery = document.createElement('div');
-          gallery.className = 'gallery';
-
-          area.images.forEach(img => {
-            const imgPath = area.path + img;
-            const index = allImages.length;
-            allImages.push(imgPath);
-
-            const image = document.createElement('img');
-            image.src = imgPath;
-            image.onclick = () => openModal(index);
-            gallery.a
+</body>
+</html>
