@@ -181,5 +181,26 @@
   <footer>
     © חופשה בכפר · כל הזכויות שמורות
   </footer>
+  <script>
+fetch('images.json')
+  .then(response => response.json())
+  .then(data => {
+    const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = ''; // מוחק placeholders
+
+    for (const folder in data) {
+      data[folder].forEach(file => {
+        const img = document.createElement('img');
+        img.src = `images/${folder}/${file}`;
+        img.alt = folder;
+        img.style.width = "100%";
+        img.style.borderRadius = "12px";
+        gallery.appendChild(img);
+      });
+    }
+  })
+  .catch(err => console.error('Error loading images:', err));
+</script>
+
 </body>
 </html>
