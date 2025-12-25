@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>חופשה בכפר – וילה להשכרה</title>
+  <style>
+    :root{
+      --bg:#f7f7f5;
+      --card:#ffffff;
+      --accent:#2f6f4e;
+      --accent-2:#a7c7b7;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#eef3f0, var(--bg));
+    }
+    header{
+      background:linear-gradient(135deg,var(--accent),#1f4f39);
+      color:#fff;
+      padding:56px 20px;
+    }
+    .container{max-width:1100px;margin:auto;padding:20px}
+    h1{margin:0 0 8px;font-size:36px}
+    h2{margin:0 0 12px;font-size:26px}
+    h3{margin:0 0 8px;font-size:20px}
+    p{margin:0 0 10px;line-height:1.6}
+    .badge{
+      display:inline-block;background:rgba(255,255,255,.18);
+      padding:6px 12px;border-radius:999px;font-size:14px
+    }
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px
+    }
+    .card{
+      background:var(--card);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:20px
+    }
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center
+    }
+    @media (max-width:800px){.hero{grid-template-columns:1fr}}
+    .hero img{
+      width:100%;height:280px;object-fit:cover;border-radius:var(--radius)
+    }
+    .btn{
+      display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+      padding:12px 18px;border-radius:12px;font-weight:600
+    }
+    .btn.secondary{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+    .list{padding:0;margin:0;list-style:none}
+    .list li{margin:8px 0;padding-right:18px;position:relative}
+    .list li:before{content:"✔";position:absolute;right:0;color:var(--accent)}
+    .gallery{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px
+    }
+    .ph{
+      background:linear-gradient(135deg,#e5e7eb,#f3f4f6);
+      border-radius:12px;height:120px;display:flex;align-items:center;justify-content:center;
+      color:var(--muted);font-size:14px
+    }
+    footer{padding:30px 20px;color:var(--muted);text-align:center}
+    .rooms details{border-top:1px dashed #e5e7eb;padding:12px 0}
+    .rooms summary{cursor:pointer;font-weight:700}
+    .rooms small{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <span class="badge">נופש פסטורלי ליד ירושלים</span>
+      <h1>חופשה בכפר 🌿</h1>
+      <p>וילה מרווחת על צלע הר עם נוף פתוח, מושלמת לקבוצות ומשפחות גדולות.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card hero">
+      <div>
+        <h2>ברוכים הבאים</h2>
+        <p>המקום חדש – חלק מקישורי התמונות יתעדכנו בקרוב. אנו עושים זאת במהירות האפשרית.</p>
+        <p><strong>מיקום:</strong> כ־15 דקות מירושלים וכ־40 דקות מתל אביב.</p>
+        <a class="btn" href="#contact">יצירת קשר</a>
+        <a class="btn secondary" href="#gallery">לתמונות</a>
+      </div>
+      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop" alt="וילה בטבע" />
+    </section>
+
+    <section class="grid" style="margin-top:20px">
+      <div class="card">
+        <h3>מה בסביבה</h3>
+        <ul class="list">
+          <li>מכולת גדולה</li>
+          <li>מגרשי ספורט</li>
+          <li>בריכת שחייה להשכרה</li>
+          <li>פארק שעשועים</li>
+          <li>פינות חי</li>
+          <li>מסלולי הליכה וטבע ירוק</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>הווילה</h3>
+        <ul class="list">
+          <li>סלון ענק</li>
+          <li>מטבח גדול ומאובזר</li>
+          <li>6 חדרי שינה</li>
+          <li>4 חדרי רחצה</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>בחצר</h3>
+        <ul class="list">
+          <li>טרמפולינה ענקית</li>
+          <li>שולחנות משחק</li>
+          <li>מדשאה ופינות ישיבה</li>
+          <li>נוף פתוח</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:20px">
+      <h3>קיבולת</h3>
+      <p><strong>סה"כ:</strong> 8 חדרים סגורים, עד 36 מיטות (אפשרות לתוספת מזרנים).</p>
+      <small>כל המיטות נפרדות.</small>
+    </section>
+
+    <section id="rooms" class="card rooms" style="margin-top:20px">
+      <h3>חלוקת חדרים</h3>
+      <details open>
+        <summary>קומת כניסה</summary>
+        <p><strong>חדר 1:</strong> 5 מיטות</p>
+        <p><strong>חדר 2:</strong> 3 מיטות</p>
+        <small>חדר רחצה בקומה</small>
+      </details>
+      <details>
+        <summary>קומה ראשונה</summary>
+        <p><strong>חדר 3:</strong> 5 מיטות</p>
+        <p><strong>חדר 4:</strong> 2 מיטות</p>
+        <p><strong>סוויטה (חדר 5):</strong> 4 מיטות + מרפסת</p>
+      </details>
+      <details>
+        <summary>יחידה תחתונה – כניסה נפרדת</summary>
+        <p><strong>חדר 6:</strong> 2 מיטות</p>
+        <p><strong>סלון:</strong> 2 מיטות</p>
+        <small>מטבחון, מקלחת ושירותים</small>
+      </details>
+      <details>
+        <summary>הצימר</summary>
+        <p><strong>חדר 7:</strong> 2 מיטות</p>
+        <p><strong>חדר 8:</strong> 6 מיטות</p>
+        <p><strong>סלון:</strong> 6 מיטות</p>
+      </details>
+    </section>
+
+    <section id="gallery" class="card" style="margin-top:20px">
+      <h3>גלריה</h3>
+      <div class="gallery">
+        <div class="ph">תמונות המתחם</div>
+        <div class="ph">חצר</div>
+        <div class="ph">סלון</div>
+        <div class="ph">מטבח</div>
+        <div class="ph">חדרים</div>
+      </div>
+      <small>ניתן להחליף כל תיבה בקישור ל-Google Drive או בתמונות אמיתיות.</small>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:20px">
+      <h3>פרטים והזמנות</h3>
+      <p>📞 <strong>058-447-3008</strong></p>
+      <a class="btn" href="tel:0584473008">התקשרו עכשיו</a>
+    </section>
+  </main>
+
+  <footer>
+    © חופשה בכפר · כל הזכויות שמורות
+  </footer>
+</body>
+</html>
